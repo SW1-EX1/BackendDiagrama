@@ -1,0 +1,40 @@
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+logs
+*.log
+logs/*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Entornos locales
+.env
+.env.local
+.env.*.local
+
+# IDEs y editores
+.vscode/
+.idea/
+*.sublime-workspace
+*.swp
+
+# Archivos de compilación
+dist/
+build/
+out/
+
+# Otros
+*.bak
+*.tmp
+*.cache
