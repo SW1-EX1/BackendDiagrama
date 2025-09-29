@@ -3,7 +3,7 @@ const { getProyecto,
     getProyectos, 
     createProyecto, 
     deleteProyecto, 
-    updateProyecto 
+    updateProyecto
 } = require("../controllers/proyectos");
 
 const router = Router();

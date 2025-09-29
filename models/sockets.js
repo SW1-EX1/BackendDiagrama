@@ -52,7 +52,8 @@ class Sockets {
             });
 
             socket.on('deleteEdges', (data) => {
-                console.log(`delete edges ${data}`);
+                console.log(`delete edges recibido:`, data);
+                console.log(`broadcasting a room:`, data.room);
                 this.io.to(data.room).emit('deletedEdges', data.edges);
             });
 
@@ -60,6 +61,24 @@ class Sockets {
                 console.log(`set label edge ${data.edges}`);
                 this.io.to(data.room).emit('changeLabel', data);
             });
+
+            // Crear nodo intermedio para asociación de clases
+socket.on('createIntermediateNode', (data) => {
+    console.log(`backend: nodo intermedio creado`, data.intermediateNode.data.label);
+    this.io.to(data.room).emit('newIntermediateNode', data);
+});
+
+// Crear múltiples edges para el nodo intermedio
+socket.on('createIntermediateEdges', (data) => {
+    console.log(`backend: edges intermedios creados`, data.edges.length, 'edges');
+    this.io.to(data.room).emit('newIntermediateEdges', data);
+});
+
+// Reemplazar edge original con configuración intermedia
+socket.on('replaceEdgeWithIntermediate', (data) => {
+    console.log(`backend: reemplazando edge ${data.originalEdgeId} con estructura intermedia`);
+    this.io.to(data.room).emit('edgeReplacedWithIntermediate', data);
+});
         });
     }
 }
